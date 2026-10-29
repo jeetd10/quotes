@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthology of Devotion & Longing — 100 Literary Love Passages</title>
+  <meta name="description" content="A curated collection of 100 original, literary-style multi-sentence passages on devotion, longing, soulmates, tenderness, commitment, and building a future together.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">❧</div>
+        <div class="brand-text">
+          <h1>Anthology</h1>
+          <p>Devotion &amp; Longing</p>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button id="ambient-audio-btn" class="btn-pill" title="Toggle gentle ambient chimes">
+          <span class="icon">♫</span> <span class="label">Ambient Sound</span>
+        </button>
+
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Light / Dark Mode" aria-label="Toggle Theme">
+          <span id="theme-icon">◐</span>
+        </button>
+
+        <button id="export-notes-btn" class="btn-pill" title="Export your personal reflections">
+          <span>✎</span> <span>Export Notes</span>
+        </button>
+
+        <button id="random-passage-btn" class="btn-pill primary" title="Read a random passage">
+          <span>✦</span> <span>Random Passage</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-pill">A Dedicated Anthology • 100 Literary Love Passages</div>
+      <h2>To my littleeeee <em>princesssssssssss</em></h2>
+      <p>
+        Every word here is for you—long, tender passages on devotion, longing, and building our forever together.
+      </p>
+
+      <div class="stats-ribbon">
+        <div class="stat-item">
+          <span class="stat-number">100</span>
+          <span>Original Passages</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">6</span>
+          <span>Core Themes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="fav-counter">0</span>
+          <span>Favorites Saved</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" id="notes-counter">0</span>
+          <span>Personal Notes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls Panel: Search & Filters -->
+    <section class="controls-panel">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search passages by keyword, emotion, imagery, or theme (e.g. 'tea', 'silence', 'rain', 'patience')..."
+          autocomplete="off"
+        >
+        <button id="clear-search-btn" class="clear-search-btn" title="Clear Search">✕</button>
+      </div>
+
+      <div class="filter-wrapper">
+        <div class="category-tabs" id="category-tabs">
+          <button class="tab-btn active" data-category="all">All Passages (100)</button>
+          <button class="tab-btn" data-category="Devotion">Devotion (17)</button>
+          <button class="tab-btn" data-category="Longing">Longing (17)</button>
+          <button class="tab-btn" data-category="Soulmates">Soulmates (17)</button>
+          <button class="tab-btn" data-category="Tenderness">Tenderness (17)</button>
+          <button class="tab-btn" data-category="Commitment">Commitment (16)</button>
+          <button class="tab-btn" data-category="Building a Future">Building a Future (16)</button>
+        </div>
+
+        <div class="status-filters">
+          <button id="filter-favorites-btn" class="filter-badge-btn" title="Filter to show only starred passages">
+            <span>♥</span> <span>Favourites</span>
+          </button>
+          <button id="filter-notes-btn" class="filter-badge-btn" title="Filter to show only passages where you wrote a note">
+            <span>✎</span> <span>With My Notes</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="status-count" id="results-count">
+        Showing <strong>100</strong> passages
+      </div>
+      <div class="status-tip">
+        Click the pen icon on any card to attach your own private reflection.
+      </div>
+    </div>
+
+    <!-- Passages Grid -->
+    <section class="passages-grid" id="passages-grid">
+      <!-- Injected via JavaScript -->
+    </section>
+  </main>
+
+  <!-- Spotlight Modal for Random Passage -->
+  <div class="modal-backdrop" id="spotlight-modal">
+    <div class="spotlight-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">✕</button>
+      <div class="card-meta">
+        <span class="category-tag" id="spotlight-category">Category</span>
+        <span class="word-count-tag" id="spotlight-wc">0 words</span>
+      </div>
+      <h3 class="card-title" id="spotlight-title" style="margin-top: 14px; font-size: 1.4rem;">Passage Title</h3>
+      <p class="spotlight-quote" id="spotlight-text"></p>
+      <div class="card-attribution">Original Literary Passage • Unattributed</div>
+
+      <div class="card-actions" style="margin-top: 24px;">
+        <div class="card-action-group">
+          <button class="card-action-btn" id="spotlight-fav-btn">
+            <span>♥</span> <span id="spotlight-fav-label">Favorite</span>
+          </button>
+          <button class="card-action-btn" id="spotlight-copy-btn">
+            <span>📋</span> <span>Copy</span>
+          </button>
+          <button class="card-action-btn" id="spotlight-export-img-btn">
+            <span>🖼</span> <span>Save Image</span>
+          </button>
+        </div>
+        <button class="btn-pill primary" id="spotlight-next-btn">
+          <span>✦ Another Random</span>
+        </button>
+      </div>
+
+      <!-- Spotlight Personal Note -->
+      <div class="note-drawer open" style="margin-top: 20px; border-top: 1px dashed var(--border-color); padding-top: 16px;">
+        <div class="note-header">
+          <span>Your Reflection on this passage:</span>
+          <span class="note-status" id="spotlight-note-status">Auto-saved</span>
+        </div>
+        <textarea 
+          id="spotlight-note-input" 
+          class="note-textarea" 
+          placeholder="Write your private note, memory, or thoughts about this passage..."
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Hidden Canvas for Quote Card Image Generator -->
+  <canvas id="quote-export-canvas" width="1200" height="900"></canvas>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p><strong>The Anthology of Devotion &amp; Longing</strong> — 100 Original Literary Prose Passages</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: var(--text-faint);">
+        All passages are original literary compositions created for contemplative reading and honest reflection.
+      </p>
+      <div class="footer-links">
+        <a href="#top" class="footer-link">Back to Top ↑</a>
+        <span style="color: var(--border-color);">•</span>
+        <span class="footer-link">Runs entirely offline on localhost</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
